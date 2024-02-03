@@ -27,3 +27,4 @@ _deps
 *.rar
 
 main.c
+*.exe
