@@ -25,3 +25,5 @@ _deps
 *.exp
 *.o*
 *.rar
+
+main.c
