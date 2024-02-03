@@ -4,9 +4,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class FileOperations {
-    
+
     public static boolean CopyFile(String existingFilePath, String newFilePath) throws IOException {
-        
+
         // clearing previous error value
         SimpleFunctions.GetLastError();
 
@@ -22,15 +22,13 @@ public class FileOperations {
         if (error_no == WinErrorCodes.ERROR_FILE_NOT_FOUND.getValue()) {
             throw new FileNotFoundException(String.format("%s Not Found.", existingFilePath));
         }
-        
+
         if (WinErrorCodes.ERROR_ACCESS_DENIED.getValue() == error_no) {
             throw new IOException(String.format("%s Access Denied.", existingFilePath));
         }
-        
 
         return false;
     }
-
 
     public static void MoveFile(String existingFileName, String newFileName) throws IOException {
         // resetting error no.
@@ -40,7 +38,7 @@ public class FileOperations {
             throw new IOException("File path is null");
         }
 
-        boolean isSuccess =  SimpleFunctions.MoveFile(existingFileName, newFileName);
+        boolean isSuccess = SimpleFunctions.MoveFile(existingFileName, newFileName);
 
         if (isSuccess) {
             return;
@@ -59,5 +57,5 @@ public class FileOperations {
     }
 
     // @Override
-    // public 
+    // public
 }
