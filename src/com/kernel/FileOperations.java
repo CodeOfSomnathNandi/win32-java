@@ -26,8 +26,9 @@ public class FileOperations {
         if (WinErrorCodes.ERROR_ACCESS_DENIED.getValue() == error_no) {
             throw new IOException(String.format("{} Access Denied.", existingFilePath));
         }
+        
 
-        return true;
+        return false;
     }
 
     // @Override
