@@ -49,8 +49,8 @@ JNIEXPORT jlong JNICALL Java_com_kernel_SimpleFunctions_GetCurrentProcessId
 
 /*
  * Class:     com_kernel_SimpleFunctions
- * Method:    CopyFileA
- * Signature: (Ljava/lang/String;Ljava/lang/String;Z)V
+ * Method:    CopyFile
+ * Signature: (Ljava/lang/String;Ljava/lang/String;Z)Z
  */
 JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_CopyFile
   (JNIEnv *, jclass, jstring, jstring, jboolean);

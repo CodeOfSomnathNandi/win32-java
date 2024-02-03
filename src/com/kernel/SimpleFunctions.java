@@ -1,10 +1,11 @@
 package com.kernel;
 
+import java.io.File;
 
 public class SimpleFunctions {
 
     static {
-        System.load("C:\\Users\\somna\\OneDrive\\Documents\\vs_code\\win32-java\\wrapper\\build\\Debug\\win32.dll");
+        System.loadLibrary("win32");
     }
 
     public static native long GetLastError();
