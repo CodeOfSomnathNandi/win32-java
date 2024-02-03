@@ -42,4 +42,6 @@ public class SimpleFunctions {
     public static native boolean FileEncryptionStatusA(String lpFileName, long lpStatus);
 
     public static native long GetFileSize(String hFileName);
+
+    public static native long GetFileType(String hFileName);
 }

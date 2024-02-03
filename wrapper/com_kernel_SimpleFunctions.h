@@ -87,6 +87,54 @@ JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_MoveFile
 JNIEXPORT jstring JNICALL Java_com_kernel_SimpleFunctions_GetCurrentDirectory
   (JNIEnv *, jclass);
 
+/*
+ * Class:     com_kernel_SimpleFunctions
+ * Method:    CreateSymbolicLinkA
+ * Signature: (Ljava/lang/String;Ljava/lang/String;J)Z
+ */
+JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_CreateSymbolicLinkA
+  (JNIEnv *, jclass, jstring, jstring, jlong);
+
+/*
+ * Class:     com_kernel_SimpleFunctions
+ * Method:    DecryptFileA
+ * Signature: (Ljava/lang/String;J)Z
+ */
+JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_DecryptFileA
+  (JNIEnv *, jclass, jstring, jlong);
+
+/*
+ * Class:     com_kernel_SimpleFunctions
+ * Method:    EncryptFileA
+ * Signature: (Ljava/lang/String;)Z
+ */
+JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_EncryptFileA
+  (JNIEnv *, jclass, jstring);
+
+/*
+ * Class:     com_kernel_SimpleFunctions
+ * Method:    FileEncryptionStatusA
+ * Signature: (Ljava/lang/String;J)Z
+ */
+JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_FileEncryptionStatusA
+  (JNIEnv *, jclass, jstring, jlong);
+
+/*
+ * Class:     com_kernel_SimpleFunctions
+ * Method:    GetFileSize
+ * Signature: (Ljava/lang/String;)J
+ */
+JNIEXPORT jlong JNICALL Java_com_kernel_SimpleFunctions_GetFileSize
+  (JNIEnv *, jclass, jstring);
+
+/*
+ * Class:     com_kernel_SimpleFunctions
+ * Method:    GetFileType
+ * Signature: (Ljava/lang/String;)J
+ */
+JNIEXPORT jlong JNICALL Java_com_kernel_SimpleFunctions_GetFileType
+  (JNIEnv *, jclass, jstring);
+
 #ifdef __cplusplus
 }
 #endif
