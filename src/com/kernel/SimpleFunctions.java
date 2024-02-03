@@ -1,7 +1,10 @@
 package com.kernel;
-
-import java.io.File;
-
+/**
+ * This class is not so important this contains purely native functions.
+ * You should avoid this function and use Wrapper functions.
+ * @author Somnath Nandi
+ * @since 0.0.1
+ */
 public class SimpleFunctions {
 
     static {
