@@ -50,7 +50,7 @@ JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_CreateDirectory(JNIEn
 {
     char *pathName = jstring_to_cstr(env, lpPathName);
 
-    WINBOOL isSuccess = CreateDirectoryA(pathName, NULL);
+    int isSuccess = CreateDirectoryA(pathName, NULL);
 
     if (isSuccess == TRUE)
     {
