@@ -2,6 +2,8 @@
 #include <windows.h>
 #include <winerror.h>
 #include <string>
+#include "utility.h"
+#include <winnt.h>
 
 JNIEXPORT jlong JNICALL Java_com_kernel_SimpleFunctions_GetLastError(JNIEnv *, jclass)
 {
@@ -28,22 +30,6 @@ JNIEXPORT jlong JNICALL Java_com_kernel_SimpleFunctions_GetCurrentProcessId(JNIE
     return (jlong)(INT32)GetCurrentProcessId();
 }
 
-char *jstring_to_cstr(JNIEnv *env, jstring str)
-{
-    int length = env->GetStringLength(str);
-    char *cstr = new char[length + 1];
-    const jchar *charArray = env->GetStringChars(str, nullptr);
-
-    for (int i = 0; i < length; i++)
-    {
-        cstr[i] = (char)charArray[i];
-    }
-
-    cstr[length] = '\0';
-
-    return cstr;
-}
-
 JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_CopyFile(JNIEnv *env, jclass, jstring lpExistingFileName, jstring lpNewFileName, jboolean bFailIfExists)
 {
     char *newFileName = jstring_to_cstr(env, lpNewFileName);
@@ -60,8 +46,18 @@ JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_CopyFile(JNIEnv *env,
     }
 }
 
-JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_CreateDirectory
-(JNIEnv * env, jclass, jstring lpPathName, jobject attr)
+JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_CreateDirectory(JNIEnv *env, jclass, jstring lpPathName)
 {
-    
+    char *pathName = jstring_to_cstr(env, lpPathName);
+
+    WINBOOL isSuccess = CreateDirectoryA(pathName, NULL);
+
+    if (isSuccess == TRUE)
+    {
+        return JNI_TRUE;
+    }
+    else
+    {
+        return JNI_FALSE;
+    }
 }

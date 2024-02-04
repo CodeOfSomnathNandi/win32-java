@@ -25,7 +25,7 @@ public class SimpleFunctions {
 
     public static native boolean CopyFile(String lpExistingFileName, String lpNewFileName, boolean bFailIfExists);
 
-    public static native boolean CreateDirectory(String lpPathName, SecurityAttributes attr);
+    public static native boolean CreateDirectory(String lpPathName);
 
     public static native boolean DeleteFile(String lpFileName);
 

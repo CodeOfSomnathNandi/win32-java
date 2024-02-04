@@ -61,7 +61,7 @@ JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_CopyFile
  * Signature: (Ljava/lang/String;Lcom/kernel/SecurityAttributes;)Z
  */
 JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_CreateDirectory
-  (JNIEnv *, jclass, jstring, jobject);
+  (JNIEnv *, jclass, jstring);
 
 /*
  * Class:     com_kernel_SimpleFunctions
