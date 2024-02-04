@@ -56,6 +56,39 @@ public class FileOperations {
 
     }
 
-    // @Override
-    // public
+    public static void  DeleteFile(String FileName) throws IOException {
+        SimpleFunctions.GetLastError();
+        
+        boolean isSuccess = SimpleFunctions.DeleteFile(FileName);
+        if (isSuccess) {
+            return;
+        }
+
+        var error_no = SimpleFunctions.GetLastError();
+
+        if (error_no == WinErrorCodes.ERROR_FILE_NOT_FOUND.getValue()) {
+            throw new FileNotFoundException(String.format("%s not found.", FileName));
+        }
+
+        if (!isSuccess) {
+            throw new IOException(String.format("error code: %d", error_no));
+        }
+    }
+
+    public static long GetFileSize(String hFileName) throws IOException {
+        SimpleFunctions.GetLastError();
+
+        long fileSize = SimpleFunctions.GetFileSize(hFileName);
+        var error_no = SimpleFunctions.GetLastError();
+        if (error_no == WinErrorCodes.ERROR_FILE_NOT_FOUND.getValue()) {
+            throw new FileNotFoundException(String.format("%s not found.", hFileName));
+        }
+
+        if (error_no != WinErrorCodes.NO_ERROR.getValue()) {
+            throw new IOException(String.format("%d error code", error_no));
+        }
+
+        return fileSize;
+    }
+
 }
