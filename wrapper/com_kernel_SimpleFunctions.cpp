@@ -107,12 +107,14 @@ JNIEXPORT jstring JNICALL Java_com_kernel_SimpleFunctions_GetCurrentDirectory(JN
     const int size = 2056;
     LPSTR buffer = new char[size];
     DWORD length = GetCurrentDirectoryA(size, buffer);
-    LPSTR newBuff = new char[length];
+    LPSTR newBuff = new char[length+1];
 
     for (DWORD i = 0; i < length; i++)
     {
         newBuff[i] = buffer[i];
     }
+
+    newBuff[length] = '\0';
 
     jstring buff = env->NewStringUTF(newBuff);
 
