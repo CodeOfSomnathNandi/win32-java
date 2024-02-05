@@ -58,7 +58,7 @@ JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_CopyFile
 /*
  * Class:     com_kernel_SimpleFunctions
  * Method:    CreateDirectory
- * Signature: (Ljava/lang/String;Lcom/kernel/SecurityAttributes;)Z
+ * Signature: (Ljava/lang/String;)Z
  */
 JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_CreateDirectory
   (JNIEnv *, jclass, jstring);
@@ -133,6 +133,62 @@ JNIEXPORT jlong JNICALL Java_com_kernel_SimpleFunctions_GetFileSize
  * Signature: (Ljava/lang/String;)J
  */
 JNIEXPORT jlong JNICALL Java_com_kernel_SimpleFunctions_GetFileType
+  (JNIEnv *, jclass, jstring);
+
+/*
+ * Class:     com_kernel_SimpleFunctions
+ * Method:    CreateFileA
+ * Signature: (Ljava/lang/String;JJJJJ)J
+ */
+JNIEXPORT jlong JNICALL Java_com_kernel_SimpleFunctions_CreateFileA
+  (JNIEnv *, jclass, jstring, jlong, jlong, jlong, jlong, jlong);
+
+/*
+ * Class:     com_kernel_SimpleFunctions
+ * Method:    GetLongPathNameA
+ * Signature: (Ljava/lang/String;)Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_com_kernel_SimpleFunctions_GetLongPathNameA
+  (JNIEnv *, jclass, jstring);
+
+/*
+ * Class:     com_kernel_SimpleFunctions
+ * Method:    GetTempPathA
+ * Signature: (Ljava/lang/String;)Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_com_kernel_SimpleFunctions_GetTempPathA
+  (JNIEnv *, jclass, jstring);
+
+/*
+ * Class:     com_kernel_SimpleFunctions
+ * Method:    CreateDirectoryA
+ * Signature: (Ljava/lang/String;)Z
+ */
+JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_CreateDirectoryA
+  (JNIEnv *, jclass, jstring);
+
+/*
+ * Class:     com_kernel_SimpleFunctions
+ * Method:    RemoveDirectoryA
+ * Signature: (Ljava/lang/String;)Z
+ */
+JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_RemoveDirectoryA
+  (JNIEnv *, jclass, jstring);
+
+/*
+ * Class:     com_kernel_SimpleFunctions
+ * Method:    SetCurrentDirectory
+ * Signature: (Ljava/lang/String;)Z
+ */
+JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_SetCurrentDirectory
+  (JNIEnv *, jclass, jstring);
+
+/*
+ * Class:     com_kernel_SimpleFunctions
+ * Method:    GetDriveTypeA
+ * Signature: (Ljava/lang/String;)I
+ */
+JNIEXPORT jint JNICALL Java_com_kernel_SimpleFunctions_GetDriveTypeA
   (JNIEnv *, jclass, jstring);
 
 #ifdef __cplusplus
