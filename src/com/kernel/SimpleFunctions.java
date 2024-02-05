@@ -44,4 +44,25 @@ public class SimpleFunctions {
     public static native long GetFileSize(String hFileName);
 
     public static native long GetFileType(String hFileName);
+
+    public static native long CreateFileA(
+            String lpFileName,
+            long dwDesiredAccess,
+            long dwShareMode,
+            long dwCreationDisposition,
+            long dwFlagsAndAttributes,
+            long hTemplateFile);
+
+    public static native String GetLongPathNameA(String lpszShortPath);
+
+    public static native String GetTempPathA(String nBufferLength);
+
+    public static native boolean CreateDirectoryA(String lpPathName);
+
+    public static native boolean RemoveDirectoryA(String lpPathName);
+
+    public static native boolean SetCurrentDirectory(String lpPathName);
+
+    public static native int GetDriveTypeA(String lpRootPathName);
+
 }
