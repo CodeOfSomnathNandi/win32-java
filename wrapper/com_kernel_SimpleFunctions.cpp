@@ -165,7 +165,7 @@ JNIEXPORT jlong JNICALL Java_com_kernel_SimpleFunctions_GetFileType(JNIEnv *env,
 
 JNIEXPORT jlong JNICALL Java_com_kernel_SimpleFunctions_CreateFileA(JNIEnv *, jclass, jstring, jlong, jlong, jlong, jlong, jlong)
 {
-    
+    return 0;
 }
 
 JNIEXPORT jstring JNICALL Java_com_kernel_SimpleFunctions_GetLongPathNameA(JNIEnv *env, jclass, jstring pathName)
