@@ -10,6 +10,10 @@ JNIEXPORT jlong JNICALL Java_com_kernel_NativeProcess_CreateProcessA(JNIEnv *env
     PROCESS_INFORMATION pi;
     CreateProcessA(lpApplicationName, lpCommandLine, NULL, NULL, bInheritHandles, dwCreationFlags, NULL, lpCurrentDirectory, NULL, &pi);
 
+    delete lpApplicationName;
+    delete lpCommandLine;
+    delete lpCurrentDirectory;
+
     return (jlong)pi.hProcess;
 }
 
@@ -49,8 +53,12 @@ JNIEXPORT jstring JNICALL Java_com_kernel_NativeProcess_GetEnvironmentVariable(J
     }
 
     finalValue[newSize] = '\0';
-
     jstring value = env->NewStringUTF(finalValue);
+
+    // freeing memory
+    delete lpEnvName;
+    delete lpValue;
+    delete finalValue;
 
     return value;
 }
