@@ -38,15 +38,7 @@ JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_CopyFile(JNIEnv *env,
 
     delete newFileName;
     delete existingFileName;
-
-    if (success == TRUE)
-    {
-        return JNI_TRUE;
-    }
-    else
-    {
-        return JNI_FALSE;
-    }
+    return success == TRUE ? JNI_TRUE : JNI_FALSE;
 }
 
 JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_CreateDirectory(JNIEnv *env, jclass, jstring lpPathName)
@@ -56,14 +48,7 @@ JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_CreateDirectory(JNIEn
 
     delete pathName;
 
-    if (isSuccess == TRUE)
-    {
-        return JNI_TRUE;
-    }
-    else
-    {
-        return JNI_FALSE;
-    }
+   return isSuccess == TRUE ? JNI_TRUE : JNI_FALSE;
 }
 
 JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_DeleteFile(JNIEnv *env, jclass, jstring fileName)
@@ -73,14 +58,7 @@ JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_DeleteFile(JNIEnv *en
 
     delete cfileName;
 
-    if (isSuccess == TRUE)
-    {
-        return JNI_TRUE;
-    }
-    else
-    {
-        return JNI_FALSE;
-    }
+    return isSuccess == TRUE ? JNI_TRUE : JNI_FALSE;
 }
 
 JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_MoveFile(JNIEnv *env, jclass, jstring existingFileName, jstring newFileName)
@@ -92,14 +70,7 @@ JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_MoveFile(JNIEnv *env,
     delete lpExistingFileName;
     delete lpNewFileName;
 
-    if (isSuccess == TRUE)
-    {
-        return JNI_TRUE;
-    }
-    else
-    {
-        return JNI_FALSE;
-    }
+    return isSuccess == TRUE ? JNI_TRUE : JNI_FALSE;
 }
 
 JNIEXPORT jstring JNICALL Java_com_kernel_SimpleFunctions_GetCurrentDirectory(JNIEnv *env, jclass)
@@ -133,14 +104,7 @@ JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_CreateSymbolicLinkA(J
     delete lpSymlinkFileName;
     delete lpTargetFileName;
 
-    if (isSuccess == TRUE)
-    {
-        return JNI_TRUE;
-    }
-    else
-    {
-        return JNI_FALSE;
-    }
+   return isSuccess == TRUE ? JNI_TRUE : JNI_FALSE;
 }
 
 JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_DecryptFileA(JNIEnv *env, jclass, jstring fileName, jlong dwReserved)
@@ -150,14 +114,7 @@ JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_DecryptFileA(JNIEnv *
 
     delete lpFileName;
 
-    if (isSuccess == TRUE)
-    {
-        return JNI_TRUE;
-    }
-    else
-    {
-        return JNI_FALSE;
-    }
+    return isSuccess == TRUE ? JNI_TRUE : JNI_FALSE;
 }
 
 JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_EncryptFileA(JNIEnv *env, jclass, jstring fileName)
@@ -167,14 +124,7 @@ JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_EncryptFileA(JNIEnv *
 
     delete lpFileName;
 
-    if (isSuccess == TRUE)
-    {
-        return JNI_TRUE;
-    }
-    else
-    {
-        return JNI_FALSE;
-    }
+    return isSuccess == TRUE ? JNI_TRUE : JNI_FALSE;
 }
 
 JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_FileEncryptionStatusA(JNIEnv *env, jclass, jstring fileName, jlong status)
@@ -186,14 +136,7 @@ JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_FileEncryptionStatusA
 
     delete lpFileName;
 
-    if (isSuccess == TRUE)
-    {
-        return JNI_TRUE;
-    }
-    else
-    {
-        return JNI_FALSE;
-    }
+    return isSuccess == TRUE ? JNI_TRUE : JNI_FALSE;
 }
 
 JNIEXPORT jlong JNICALL Java_com_kernel_SimpleFunctions_GetFileSize(JNIEnv *env, jclass, jstring fileName)
