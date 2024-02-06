@@ -1,6 +1,8 @@
+#include <windows.h>
+
 #include "com_kernel_NativeProcess.h"
 #include "utility.h"
-#include <windows.h>
+
 
 JNIEXPORT jlong JNICALL Java_com_kernel_NativeProcess_CreateProcessA(JNIEnv *env, jclass, jstring applicationName, jstring commandLine, jboolean bInheritHandles, jlong dwCreationFlags, jlong lpEnvironment, jstring currentDirectory)
 {
@@ -8,7 +10,7 @@ JNIEXPORT jlong JNICALL Java_com_kernel_NativeProcess_CreateProcessA(JNIEnv *env
     char *lpCommandLine = jstring_to_cstr(env, commandLine);
     char *lpCurrentDirectory = jstring_to_cstr(env, currentDirectory);
     PROCESS_INFORMATION pi;
-    CreateProcessA(lpApplicationName, lpCommandLine, NULL, NULL, bInheritHandles, dwCreationFlags, NULL, lpCurrentDirectory, NULL, &pi);
+    CreateProcessA(lpApplicationName, lpCommandLine, NULL, NULL, bInheritHandles, (DWORD)dwCreationFlags, NULL, lpCurrentDirectory, NULL, &pi);
 
     delete lpApplicationName;
     delete lpCommandLine;
@@ -85,7 +87,7 @@ JNIEXPORT jintArray JNICALL Java_com_kernel_NativeProcess_GetProcessTimes(JNIEnv
 
 JNIEXPORT jlong JNICALL Java_com_kernel_NativeProcess_OpenProcess(JNIEnv *, jclass, jlong dwDesiredAccess, jboolean bInheritHandle, jlong dwProcessId)
 {
-    HANDLE processHandle = OpenProcess(dwDesiredAccess, bInheritHandle, dwProcessId);
+    HANDLE processHandle = OpenProcess((DWORD)dwDesiredAccess, bInheritHandle, (DWORD)dwProcessId);
     return (jlong)processHandle;
 }
 

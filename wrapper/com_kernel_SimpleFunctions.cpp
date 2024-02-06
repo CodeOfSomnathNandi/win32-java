@@ -1,9 +1,10 @@
-#include "com_kernel_SimpleFunctions.h"
 #include <windows.h>
 #include <winerror.h>
 #include <string>
+
+#include "com_kernel_SimpleFunctions.h"
 #include "utility.h"
-#include <winnt.h>
+
 
 JNIEXPORT jlong JNICALL Java_com_kernel_SimpleFunctions_GetLastError(JNIEnv *, jclass)
 {

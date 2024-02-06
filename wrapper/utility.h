@@ -1,19 +1,16 @@
 #include "com_kernel_SimpleFunctions.h"
 
-#pragma once
+#ifndef SOMNATH_UTILITY
+#define SOMNATH_UTILITY
 
-char *jstring_to_cstr(JNIEnv *env, jstring str)
-{
-    int length = env->GetStringLength(str);
-    char *cstr = new char[length + 1];
-    const jchar *charArray = env->GetStringChars(str, nullptr);
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-    for (int i = 0; i < length; i++)
-    {
-        cstr[i] = (char)charArray[i];
-    }
+char *jstring_to_cstr(JNIEnv *env, jstring str);
 
-    cstr[length] = '\0';
-
-    return cstr;
+#ifdef __cplusplus
 }
+#endif
+
+#endif
