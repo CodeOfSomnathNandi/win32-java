@@ -55,7 +55,7 @@ JNIEXPORT jstring JNICALL Java_com_kernel_NativeProcess_GetEnvironmentVariable(J
     return value;
 }
 
-JNIEXPORT jintArray JNICALL Java_com_kernel_NativeProcess_GetProcessTimes(JNIEnv * env, jclass, jlong hProcess)
+JNIEXPORT jintArray JNICALL Java_com_kernel_NativeProcess_GetProcessTimes(JNIEnv *env, jclass, jlong hProcess)
 {
     FILETIME creationTime;
     FILETIME exitTime;
@@ -65,13 +65,31 @@ JNIEXPORT jintArray JNICALL Java_com_kernel_NativeProcess_GetProcessTimes(JNIEnv
 
     jintArray jarr = env->NewIntArray(4);
 
-    jint * arr =  env->GetIntArrayElements(jarr, NULL);
+    jint *arr = env->GetIntArrayElements(jarr, NULL);
 
     arr[0] = creationTime.dwHighDateTime;
     arr[1] = exitTime.dwHighDateTime;
     arr[2] = kernelTime.dwHighDateTime;
     arr[3] = userTime.dwHighDateTime;
-    
-    return jarr;
 
+    return jarr;
+}
+
+JNIEXPORT jlong JNICALL Java_com_kernel_NativeProcess_OpenProcess(JNIEnv *, jclass, jlong dwDesiredAccess, jboolean bInheritHandle, jlong dwProcessId)
+{
+    HANDLE processHandle = OpenProcess(dwDesiredAccess, bInheritHandle, dwProcessId);
+    return (jlong)processHandle;
+}
+
+JNIEXPORT jboolean JNICALL Java_com_kernel_NativeProcess_TerminateProcess(JNIEnv *, jclass, jlong handle, jint exitCode)
+{
+    int isSuccess = TerminateProcess((LPVOID)handle, exitCode);
+    if (isSuccess)
+    {
+        return JNI_TRUE;
+    }
+    else
+    {
+        return JNI_FALSE;
+    }
 }
