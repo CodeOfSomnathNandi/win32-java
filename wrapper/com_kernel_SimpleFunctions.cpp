@@ -163,3 +163,5 @@ JNIEXPORT jlong JNICALL Java_com_kernel_SimpleFunctions_GetFileType(JNIEnv *env,
     
     return (jlong)fileType;
 }
+
+

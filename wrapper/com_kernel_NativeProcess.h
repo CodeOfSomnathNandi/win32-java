@@ -79,6 +79,14 @@ JNIEXPORT jlong JNICALL Java_com_kernel_NativeProcess_OpenProcess
 JNIEXPORT jboolean JNICALL Java_com_kernel_NativeProcess_TerminateProcess
   (JNIEnv *, jclass, jlong, jint);
 
+/*
+ * Class:     com_kernel_NativeProcess
+ * Method:    GetCurrentProcessId
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_com_kernel_NativeProcess_GetCurrentProcessId
+  (JNIEnv *, jclass);
+
 #ifdef __cplusplus
 }
 #endif
