@@ -22,6 +22,7 @@ public class NativeProcess {
         private static native long OpenProcess(long dwDesiredAccess, boolean bInheritHandle, long dwProcessId);
 
         private static native boolean TerminateProcess(long hProcess, int uExitCode);
+        private static native long GetCurrentProcessId();
 
         private Handle threadHandle;
 
@@ -96,6 +97,10 @@ public class NativeProcess {
         }
 
         public long getPID() {
+                return GetCurrentProcessId();
+        }
+
+        public long getCurrentProccessorNumber() {
                 return GetCurrentProcessorNumber();
         }
 
