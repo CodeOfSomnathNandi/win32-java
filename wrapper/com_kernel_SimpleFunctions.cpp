@@ -5,7 +5,6 @@
 #include "com_kernel_SimpleFunctions.h"
 #include "utility.h"
 
-
 JNIEXPORT jlong JNICALL Java_com_kernel_SimpleFunctions_GetLastError(JNIEnv *, jclass)
 {
     return (jlong)(INT32)GetLastError();
@@ -49,7 +48,7 @@ JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_CreateDirectory(JNIEn
 
     delete pathName;
 
-   return isSuccess == TRUE ? JNI_TRUE : JNI_FALSE;
+    return isSuccess == TRUE ? JNI_TRUE : JNI_FALSE;
 }
 
 JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_DeleteFile(JNIEnv *env, jclass, jstring fileName)
@@ -79,7 +78,7 @@ JNIEXPORT jstring JNICALL Java_com_kernel_SimpleFunctions_GetCurrentDirectory(JN
     const int size = 2056;
     LPSTR buffer = new char[size];
     DWORD length = GetCurrentDirectoryA(size, buffer);
-    LPSTR newBuff = new char[length+1];
+    LPSTR newBuff = new char[length + 1];
 
     for (DWORD i = 0; i < length; i++)
     {
@@ -105,7 +104,7 @@ JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_CreateSymbolicLinkA(J
     delete lpSymlinkFileName;
     delete lpTargetFileName;
 
-   return isSuccess == TRUE ? JNI_TRUE : JNI_FALSE;
+    return isSuccess == TRUE ? JNI_TRUE : JNI_FALSE;
 }
 
 JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_DecryptFileA(JNIEnv *env, jclass, jstring fileName, jlong dwReserved)
@@ -158,10 +157,84 @@ JNIEXPORT jlong JNICALL Java_com_kernel_SimpleFunctions_GetFileType(JNIEnv *env,
     char *lpFileName = jstring_to_cstr(env, fileName);
     HANDLE fileHandle = CreateFileA(lpFileName, GENERIC_ALL, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
     DWORD fileType = GetFileType(fileHandle);
-    
+
     delete lpFileName;
-    
+
     return (jlong)fileType;
 }
 
+JNIEXPORT jlong JNICALL Java_com_kernel_SimpleFunctions_CreateFileA(JNIEnv *, jclass, jstring, jlong, jlong, jlong, jlong, jlong)
+{
+    
+}
 
+JNIEXPORT jstring JNICALL Java_com_kernel_SimpleFunctions_GetLongPathNameA(JNIEnv *env, jclass, jstring pathName)
+{
+    char *lpPathName = jstring_to_cstr(env, pathName);
+    const int size = 2056;
+    char *lpLongPathName = new char[size];
+    int length = GetLongPathNameA(lpPathName, lpLongPathName, size);
+    char* newBuff = new char[length+1];
+
+    for (int i = 0; i < length; i++)
+    {
+        newBuff[i] = lpLongPathName[i];
+    }
+    newBuff[length] = '\0';
+
+    delete lpPathName;
+    delete lpLongPathName;
+    delete newBuff;
+
+    return env->NewStringUTF(newBuff);
+}
+
+JNIEXPORT jstring JNICALL Java_com_kernel_SimpleFunctions_GetTempPathA(JNIEnv *env, jclass, jstring)
+{
+    const int length = 2056;
+    char *buff = new char[length];
+
+    int totalLength = GetTempPathA(length, buff);
+    char *newBuff = new char[totalLength + 1];
+
+    for (int i = 0; i < totalLength; i++)
+    {
+        newBuff[i] = buff[i];
+    }
+    newBuff[totalLength] = '\0';
+
+    delete buff;
+    delete newBuff;
+
+    return env->NewStringUTF(newBuff);
+}
+
+JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_CreateDirectoryA(JNIEnv *env, jclass, jstring pathName)
+{
+    char *lpPathName = jstring_to_cstr(env, pathName);
+    int isSuccess = CreateDirectoryA(lpPathName, NULL);
+
+    delete lpPathName;
+
+    return isSuccess == TRUE ? JNI_TRUE : JNI_FALSE;
+}
+
+JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_RemoveDirectoryA(JNIEnv *env, jclass, jstring pathName)
+{
+    char *lpPathName = jstring_to_cstr(env, pathName);
+    int isSuccess = RemoveDirectoryA(lpPathName);
+
+    delete lpPathName;
+
+    return isSuccess == TRUE ? JNI_TRUE : JNI_FALSE;
+}
+
+JNIEXPORT jboolean JNICALL Java_com_kernel_SimpleFunctions_SetCurrentDirectory(JNIEnv *env, jclass, jstring pathName)
+{
+    char *lpPathName = jstring_to_cstr(env, pathName);
+    int isSuccess = SetCurrentDirectoryA(lpPathName);
+
+    delete lpPathName;
+
+    return isSuccess == TRUE ? JNI_TRUE : JNI_FALSE;
+}

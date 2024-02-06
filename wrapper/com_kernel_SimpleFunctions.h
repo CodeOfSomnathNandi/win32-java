@@ -140,7 +140,7 @@ JNIEXPORT jlong JNICALL Java_com_kernel_SimpleFunctions_GetFileType
  * Method:    CreateFileA
  * Signature: (Ljava/lang/String;JJJJJ)J
  */
-JNIEXPORT jlong JNICALL Java_com_kernel_SimpleFunctions_CreateFileA
+JNIEXPORT jlong JNICALL Java_com_kernel_SimpleFunctions_Crea.teFileA
   (JNIEnv *, jclass, jstring, jlong, jlong, jlong, jlong, jlong);
 
 /*
