@@ -28,3 +28,4 @@ _deps
 
 main.c
 *.exe
+*.jar
